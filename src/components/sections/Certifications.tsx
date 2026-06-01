@@ -3,7 +3,6 @@
 import React from "react"
 import { motion, Variants } from "framer-motion"
 import { Award, CheckCircle2, ExternalLink } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { portfolioData } from "@/data/portfolioData"
 
 export function Certifications() {
@@ -80,48 +79,41 @@ export function Certifications() {
             >
               <div className="absolute inset-0 bg-gradient-to-tr from-primary-gold/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               
-              <div className="relative z-10 flex items-start gap-4">
-                <div className="p-3 bg-primary-gold/10 text-primary-gold rounded-xl border border-primary-gold/20">
-                  <Award className="size-6" />
-                </div>
-                <div>
-                  <h3 className="font-heading text-lg font-bold text-white mb-2 group-hover:text-primary-gold transition-colors">
-                    {cert.title}
-                  </h3>
-                  <div className="flex items-center gap-2 text-xs text-muted-gray">
-                    <span className="font-semibold text-soft-gold">{cert.issuer}</span>
-                    <span className="w-1 h-1 rounded-full bg-white/20" />
-                    <span className="flex items-center gap-1">
-                      <CheckCircle2 className="size-3 text-green-500/70" />
-                      Verified
-                    </span>
+              <div className="relative z-10 flex flex-col gap-4">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-primary-gold/10 text-primary-gold rounded-xl border border-primary-gold/20 shrink-0">
+                    <Award className="size-6" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-heading text-lg font-bold text-white mb-2 group-hover:text-primary-gold transition-colors">
+                      {cert.title}
+                    </h3>
+                    <div className="flex items-center gap-2 text-xs text-muted-gray">
+                      <span className="font-semibold text-soft-gold">{cert.issuer}</span>
+                      <span className="w-1 h-1 rounded-full bg-white/20" />
+                      <span className="flex items-center gap-1">
+                        <CheckCircle2 className="size-3 text-green-500/70" />
+                        Verified
+                      </span>
+                    </div>
                   </div>
                 </div>
+
+                {cert.certificateUrl && (
+                  <a
+                    href={cert.certificateUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-[10px] font-bold text-soft-gold hover:text-primary-gold transition-colors uppercase tracking-wider w-fit"
+                  >
+                    <ExternalLink className="size-3.5" />
+                    View Certificate
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}
         </motion.div>
-
-        {/* View All Certificates CTA */}
-        {portfolioData.certificateFolderUrl && (
-          <motion.div 
-            className="flex justify-center mt-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <Button 
-              className="bg-primary-gold hover:bg-soft-gold text-luxury-bg font-bold px-8 py-6 rounded-2xl shadow-[0_10px_30px_rgba(212,175,55,0.2)] group transition-all duration-300"
-              asChild
-            >
-              <a href={portfolioData.certificateFolderUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="size-5 mr-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                Verify All Credentials
-              </a>
-            </Button>
-          </motion.div>
-        )}
       </div>
     </section>
   )

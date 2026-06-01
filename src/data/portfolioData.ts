@@ -29,11 +29,13 @@ export interface Experience {
   type: string
   duration: string
   highlights: string[]
+  certificateUrl?: string
 }
 
 export interface Certification {
   title: string
   issuer: string
+  certificateUrl?: string
 }
 
 export const portfolioData = {
@@ -169,21 +171,22 @@ export const portfolioData = {
       role: "Developer Intern",
       company: "Haldiram's Private Limited",
       type: "Remote Internship",
-      duration: "Present",
+      duration: "May 2025 - July 2025",
       highlights: [
         "Backend API Integration",
         "Request Handling",
         "Server-Side Business Logic",
         "Git/GitHub Collaboration",
         "Agile Workflow Experience"
-      ]
+      ],
+      certificateUrl: "https://drive.google.com/file/d/1r4Uz7NVGNusYVoiC_xV16zrpayYRwy1d/view?usp=sharing"
     }
   ],
 
   certifications: [
-    { title: "Infosys TechA Python Foundation", issuer: "Infosys" },
-    { title: "Infosys GitHub Foundation", issuer: "Infosys" },
-    { title: "Infosys Agile Scrum Certification", issuer: "Infosys" }
+    { title: "Infosys TechA Python Foundation", issuer: "Infosys", certificateUrl: "https://drive.google.com/file/d/1h4MlBfVuki3kD5BTSgEoNZkoP7U2JcFH/view?usp=sharing" },
+    { title: "Infosys GitHub Foundation", issuer: "Infosys", certificateUrl: "https://drive.google.com/file/d/1-TtDOalFmNnL3MOMzZ0d1LhIF9KPKVlp/view?usp=sharing" },
+    { title: "Infosys Agile Scrum Certification", issuer: "Infosys", certificateUrl: "https://drive.google.com/file/d/13eGGs6QWGQiikYMGicS4GdJogTKFGvhL/view?usp=sharing" }
   ],
   certificateFolderUrl: "https://drive.google.com/drive/folders/13sJ6L_xTy2ay2NnLCBHTl9-epT-dt-DA?usp=sharing"
 }

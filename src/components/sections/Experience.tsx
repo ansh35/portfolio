@@ -96,7 +96,7 @@ export function Experience() {
                                <div>
                                   <h3 className="font-heading text-2xl font-bold text-white group-hover:text-primary-gold transition-colors">{exp.role}</h3>
                                   <p className="text-soft-gold font-medium">{exp.company}</p>
-                               </div>
+                                </div>
                                <span className="text-[10px] font-mono text-muted-gray uppercase tracking-widest">{exp.duration}</span>
                             </div>
                             
@@ -112,15 +112,15 @@ export function Experience() {
                                 <div className="px-3 py-1 w-fit rounded-md bg-primary-gold/10 border border-primary-gold/20 text-primary-gold text-[10px] font-bold uppercase">
                                    {exp.type}
                                 </div>
-                                {exp.company.includes("Haldiram") && portfolioData.certificateFolderUrl && (
+                                {(exp.certificateUrl || (exp.company.includes("Haldiram") && portfolioData.certificateFolderUrl)) && (
                                    <a 
-                                      href={portfolioData.certificateFolderUrl} 
+                                      href={exp.certificateUrl || portfolioData.certificateFolderUrl} 
                                       target="_blank" 
                                       rel="noopener noreferrer"
                                       className="flex items-center gap-1.5 text-[10px] font-bold text-soft-gold hover:text-primary-gold transition-colors uppercase tracking-wider group/link"
                                    >
                                       <FileCheck className="size-3.5 group-hover/link:animate-pulse" />
-                                      View Certificates
+                                      View Certificate{exp.certificateUrl ? "" : "s"}
                                    </a>
                                 )}
                              </div>
@@ -137,4 +137,3 @@ export function Experience() {
     </section>
   )
 }
-
