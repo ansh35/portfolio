@@ -125,18 +125,18 @@ export const portfolioData = {
       imageUrl: "/images/workzen.png"
     },
     {
-      id: "ai-healthcare-crm",
-      title: "AI Healthcare CRM Assistant",
-      category: "AI Application",
-      description: "An AI-powered CRM module for healthcare professionals to log and manage interactions.",
-      problem: "Healthcare representatives spend excessive time manually logging interaction notes, often missing key clinical context.",
-      solution: "AI-driven logging system that extracts core clinical data and provides context-aware suggestions during interaction entries.",
-      tech: ["React", "TypeScript", "FastAPI", "LangChain", "LangGraph", "Groq LLM"],
-      githubUrl: "https://github.com/ansh35/ai_first_crm_hcp_module_log_interaction_screen",
-      demoUrl: "https://drive.google.com/file/d/1Mug3GnV0eAxMQAr1VFgCsQwdfonFioO7/view?usp=sharing",
-      features: ["AI-driven interaction logging", "Context-aware suggestions", "Healthcare clinical data handling"],
-      contribution: "Architected the LangChain workflow for clinical data extraction and built the FastAPI backend services.",
-      imageUrl: "/images/ai-crm.png?v=2"
+      id: "json-iq",
+      title: "JSON-IQ",
+      category: "AI-Powered Developer Tool",
+      description: "JSON-IQ is an AI-powered JSON Workbench that helps developers validate, format, minify, analyze, and understand JSON data. It includes Monaco Editor integration, JSON Tree Viewer, Analytics Dashboard, TypeScript Interface Generation, and AI-powered JSON insights using Groq.",
+      problem: "Developers often struggle with validating, formatting, and understanding complex or large JSON datasets, lacking an all-in-one smart workbench.",
+      solution: "An AI-powered JSON workbench that seamlessly integrates validation, formatting, and AI-driven insights to boost developer productivity.",
+      tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Monaco Editor", "shadcn/ui", "Groq API", "Vercel"],
+      githubUrl: "https://github.com/ansh35/JSON_IQ",
+      liveUrl: "https://json-iq.vercel.app/",
+      features: ["Monaco Editor", "JSON Validation", "JSON Formatter", "JSON Minifier", "JSON Tree Viewer", "Analytics Dashboard", "TypeScript Interface Generator", "AI Error Explanation", "JSON Summary"],
+      contribution: "Developed the full-stack application using Next.js, integrated Monaco Editor for seamless coding experience, and implemented Groq API for AI insights.",
+      imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop"
     },
     {
       id: "sign-decoder",
@@ -152,17 +152,18 @@ export const portfolioData = {
       imageUrl: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=800&auto=format&fit=crop"
     },
     {
-      id: "emotion-detection",
-      title: "Emotion Detection Using Keystroke Dynamics",
-      category: "Backend Engineering",
-      description: "Contributed to backend development for an emotion detection system based on keystroke dynamics.",
-      problem: "Detecting user emotions usually requires invasive biometric sensors or camera-based analysis, which compromises privacy.",
-      solution: "Non-invasive detection system that analyzes keystroke timing and patterns to identify emotional states with high accuracy.",
-      tech: ["FastAPI", "Node.js", "Data Processing", "API Design"],
-      githubUrl: "https://github.com/ansh35/emotion-detection-using-keystrokes-dynamics",
-      features: ["API Development", "Request Handling", "Backend Services", "Data Processing", "System Integration"],
-      contribution: "Worked on API development, request handling, backend services, and data processing for system integration.",
-      imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop"
+      id: "ai-healthcare-crm",
+      title: "AI Healthcare CRM Assistant",
+      category: "AI Application",
+      description: "An AI-powered CRM module for healthcare professionals to log and manage interactions.",
+      problem: "Healthcare representatives spend excessive time manually logging interaction notes, often missing key clinical context.",
+      solution: "AI-driven logging system that extracts core clinical data and provides context-aware suggestions during interaction entries.",
+      tech: ["React", "TypeScript", "FastAPI", "LangChain", "LangGraph", "Groq LLM"],
+      githubUrl: "https://github.com/ansh35/ai_first_crm_hcp_module_log_interaction_screen",
+      demoUrl: "https://drive.google.com/file/d/1Mug3GnV0eAxMQAr1VFgCsQwdfonFioO7/view?usp=sharing",
+      features: ["AI-driven interaction logging", "Context-aware suggestions", "Healthcare clinical data handling"],
+      contribution: "Architected the LangChain workflow for clinical data extraction and built the FastAPI backend services.",
+      imageUrl: "/images/ai-crm.png?v=2"
     }
   ],
 

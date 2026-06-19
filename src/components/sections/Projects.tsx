@@ -81,7 +81,15 @@ export function Projects() {
               key={project.id}
               variants={cardVariants}
               whileHover={{ y: -8 }}
-              className="group relative rounded-3xl glass-panel border border-white/5 bg-[#0B1120]/60 overflow-hidden flex flex-col hover:border-primary-gold/30 hover:bg-primary-gold/5 transition-all duration-500 shadow-2xl"
+              className={`group relative rounded-3xl glass-panel border ${
+                project.id === "json-iq" 
+                  ? "border-primary-gold/50 shadow-[0_0_40px_rgba(212,175,55,0.15)] bg-gradient-to-b from-[#111626]/90 to-[#0B1120]/80" 
+                  : "border-white/5 bg-[#0B1120]/60"
+              } overflow-hidden flex flex-col ${
+                project.id === "json-iq" 
+                  ? "hover:border-primary-gold/80 hover:shadow-[0_0_60px_rgba(212,175,55,0.25)]" 
+                  : "hover:border-primary-gold/30 hover:bg-primary-gold/5"
+              } transition-all duration-500 shadow-2xl`}
             >
               {/* Card Header: Category & Image */}
               <div className="relative aspect-video w-full overflow-hidden">
@@ -92,11 +100,23 @@ export function Projects() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-transparent opacity-90" />
                 
-                {/* Category Badge Over Image */}
-                <div className="absolute top-6 left-6">
-                  <Badge className="bg-primary-gold/20 backdrop-blur-xl border border-primary-gold/30 text-primary-gold text-[10px] uppercase font-bold tracking-[0.2em] px-3 py-1 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
-                    {project.category}
-                  </Badge>
+                {/* Badges Container Over Image */}
+                <div className="absolute top-6 left-6 flex flex-col gap-2">
+                  <div className="flex gap-2">
+                    <Badge className="bg-primary-gold/20 backdrop-blur-xl border border-primary-gold/30 text-primary-gold text-[10px] uppercase font-bold tracking-[0.2em] px-3 py-1 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                      {project.category}
+                    </Badge>
+                  </div>
+                  {project.id === "json-iq" && (
+                    <div className="flex gap-2 mt-1">
+                      <Badge className="bg-cyan-500/20 backdrop-blur-xl border border-cyan-400/50 text-cyan-400 text-[9px] uppercase font-bold tracking-widest px-2 py-0.5">
+                        NEW PROJECT
+                      </Badge>
+                      <Badge className="bg-purple-500/20 backdrop-blur-xl border border-purple-400/50 text-purple-400 text-[9px] uppercase font-bold tracking-widest px-2 py-0.5">
+                        AI POWERED
+                      </Badge>
+                    </div>
+                  )}
                 </div>
 
                 {/* Tech Stack Overlay on Image (Bottom) */}
