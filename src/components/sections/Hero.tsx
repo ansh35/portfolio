@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { portfolioData } from "@/data/portfolioData"
 
 export function Hero() {
-  const { bio, roles } = portfolioData.personalInfo
+  const { bio, roles, resumeUrl } = portfolioData.personalInfo
   const [roleIndex, setRoleIndex] = useState(0)
 
   useEffect(() => {
@@ -119,7 +119,7 @@ export function Hero() {
               </a>
             </Button>
             <Button size="lg" variant="outline" className="w-full sm:w-auto border-primary-gold/20 text-soft-gold hover:border-primary-gold/60 hover:bg-primary-gold/5 font-sans tracking-wider rounded-lg group transition-all duration-300" asChild>
-              <a href="https://drive.google.com/file/d/1x-qOHcHC-2wErBIUtI7pKew-lNP7H-B9/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+              <a href={resumeUrl || "https://drive.google.com/file/d/1ThxeINzxiL7CwFC6hfQqpWlLhqA9aU-4/view?usp=sharing"} target="_blank" rel="noopener noreferrer">
                 Download Resume
                 <Download className="size-4 ml-1.5 group-hover:translate-y-0.5 transition-transform" />
               </a>

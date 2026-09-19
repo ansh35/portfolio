@@ -41,11 +41,11 @@ export interface Certification {
 export const portfolioData = {
   personalInfo: {
     name: "Ansh Khare",
-    location: "Madhya Pradesh, India",
     email: "khareansh075@gmail.com",
     phone: "+91-9343984204",
     linkedin: "https://www.linkedin.com/in/ansh-khare-4019a53aa/",
     github: "https://github.com/ansh35",
+    resumeUrl: "https://drive.google.com/file/d/1ThxeINzxiL7CwFC6hfQqpWlLhqA9aU-4/view?usp=sharing",
     roles: [
       "Full Stack Developer",
       "MERN Stack Developer",

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Mail, MapPin, Send, Check, AlertCircle } from "lucide-react"
+import { Mail, Send, Check, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -106,18 +106,6 @@ export function Contact() {
                     <a href={`mailto:${personalInfo.email}`} className="text-sm font-semibold text-white hover:text-soft-gold transition-colors font-mono">
                       {personalInfo.email}
                     </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 p-4 rounded-xl border border-white/5 bg-[#0B1120]/40 group hover:border-primary-gold/30 transition-all">
-                  <div className="p-2.5 rounded-lg bg-primary-gold/10 text-soft-gold border border-primary-gold/20 group-hover:scale-110 transition-transform">
-                    <MapPin className="size-4" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] text-muted-gray uppercase tracking-widest block font-sans">Location</span>
-                    <span className="text-sm font-semibold text-white">
-                      {personalInfo.location}
-                    </span>
                   </div>
                 </div>
               </div>
