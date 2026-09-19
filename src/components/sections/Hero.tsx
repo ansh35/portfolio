@@ -165,9 +165,9 @@ export function Hero() {
               
               {/* Outer Ring Items */}
               {[
-                { name: "MongoDB", category: "Database", level: "Intermediate", angle: 45, ring: 180 },
-                { name: "FastAPI", category: "Backend Framework", level: "Intermediate", angle: 135, ring: 180 },
-                { name: "LangChain", category: "AI Framework", level: "Intermediate", angle: 225, ring: 180 },
+                { name: "PostgreSQL", category: "Database", level: "Advanced", angle: 45, ring: 180 },
+                { name: "Prisma", category: "ORM", level: "Advanced", angle: 135, ring: 180 },
+                { name: "Groq SDK", category: "AI & Cloud", level: "Intermediate", angle: 225, ring: 180 },
                 { name: "Express.js", category: "Backend Framework", level: "Advanced", angle: 315, ring: 180 },
               ].map((tech) => (
                 <TechOrbitPill key={tech.name} tech={tech} ringRotation={-360} duration={40} />

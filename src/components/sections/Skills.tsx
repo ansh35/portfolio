@@ -2,7 +2,7 @@
 
 import React from "react"
 import { motion, Variants } from "framer-motion"
-import { Layers, Server, Cpu, Wrench, Globe } from "lucide-react"
+import { Layers, Server, Database, Globe, Shield, Terminal, Wrench } from "lucide-react"
 import { portfolioData } from "@/data/portfolioData"
 
 export function Skills() {
@@ -31,12 +31,12 @@ export function Skills() {
   }
 
   const categoryIcons: Record<string, any> = {
+    "Languages": Terminal,
     "Frontend": Layers,
-    "Backend": Server,
-    "Database": Cpu,
-    "AI & Automation": Cpu,
-    "Deployment": Globe,
-    "Tools": Wrench
+    "Backend & Real-Time": Server,
+    "Databases & ORM": Database,
+    "AI & Cloud/DevOps": Globe,
+    "Security & Concepts": Shield
   }
 
   return (

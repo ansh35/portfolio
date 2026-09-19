@@ -2,7 +2,7 @@
 
 import React from "react"
 import { motion, Variants } from "framer-motion"
-import { Calendar, Star, FileCheck } from "lucide-react"
+import { Calendar, Star, FileCheck, CheckCircle2 } from "lucide-react"
 import { portfolioData } from "@/data/portfolioData"
 
 export function Experience() {
@@ -100,18 +100,21 @@ export function Experience() {
                                <span className="text-[10px] font-mono text-muted-gray uppercase tracking-widest">{exp.duration}</span>
                             </div>
                             
-                            <div className="flex flex-wrap gap-2 mt-2">
-                               {exp.highlights.map((h) => (
-                                 <span key={h} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-muted-gray text-[10px] font-bold uppercase tracking-tighter group-hover:text-soft-gold group-hover:border-primary-gold/20 transition-all">
-                                   √ {h}
-                                 </span>
+                            <ul className="flex flex-col gap-2.5 my-2">
+                               {exp.highlights.map((h, i) => (
+                                 <li key={i} className="flex items-start gap-2.5 text-xs text-muted-gray leading-relaxed group-hover:text-gray-200 transition-colors">
+                                   <CheckCircle2 className="size-3.5 text-primary-gold shrink-0 mt-0.5" />
+                                   <span>{h}</span>
+                                 </li>
                                ))}
-                            </div>
+                            </ul>
                             
                             <div className="flex items-center gap-4 mt-2">
-                                <div className="px-3 py-1 w-fit rounded-md bg-primary-gold/10 border border-primary-gold/20 text-primary-gold text-[10px] font-bold uppercase">
-                                   {exp.type}
-                                </div>
+                                 {exp.type && (
+                                   <div className="px-3 py-1 w-fit rounded-md bg-primary-gold/10 border border-primary-gold/20 text-primary-gold text-[10px] font-bold uppercase">
+                                      {exp.type}
+                                   </div>
+                                 )}
                                 {(exp.certificateUrl || (exp.company.includes("Haldiram") && portfolioData.certificateFolderUrl)) && (
                                    <a 
                                       href={exp.certificateUrl || portfolioData.certificateFolderUrl} 

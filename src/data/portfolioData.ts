@@ -26,7 +26,7 @@ export interface Project {
 export interface Experience {
   role: string
   company: string
-  type: string
+  type?: string
   duration: string
   highlights: string[]
   certificateUrl?: string
@@ -62,94 +62,113 @@ export const portfolioData = {
   aboutCards: [
     {
       title: "Full Stack Development",
-      tech: ["React.js", "Next.js", "Node.js", "MongoDB"]
+      tech: ["Next.js", "React.js", "Node.js", "TypeScript", "Tailwind CSS"]
     },
     {
-      title: "AI-Powered Applications",
-      tech: ["LangChain", "LangGraph", "Groq LLM"]
+      title: "Backend & Real-Time",
+      tech: ["REST APIs", "Pusher WebSockets", "NextAuth.js", "Zod", "JWT"]
     },
     {
-      title: "Cloud Deployment",
-      tech: ["Vercel", "Render", "Railway", "Nextify"]
+      title: "Databases & ORM",
+      tech: ["PostgreSQL", "MongoDB", "Prisma", "Mongoose", "SQLite"]
     },
     {
-      title: "Backend Engineering",
-      tech: ["REST APIs", "JWT Authentication", "MVC Architecture"]
+      title: "Cloud, DevOps & AI",
+      tech: ["Vercel", "Railway", "Render", "Groq SDK", "Git & GitHub"]
     }
   ],
 
   skillCategories: [
     {
-      title: "Programming Languages",
-      skills: ["JavaScript", "TypeScript", "C++", "SQL"]
+      title: "Languages",
+      skills: ["TypeScript", "JavaScript (ES6+)", "Python", "SQL"]
     },
     {
       title: "Frontend",
-      skills: ["React.js", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "HTML5", "CSS3"]
+      skills: ["Next.js", "React.js", "Tailwind CSS", "Radix UI", "Framer Motion"]
     },
     {
-      title: "Backend",
-      skills: ["Node.js", "Express.js", "FastAPI", "REST APIs", "JWT Authentication"]
+      title: "Backend & Real-Time",
+      skills: ["Node.js", "Express.js", "REST APIs", "Pusher WebSockets", "NextAuth.js", "Zod", "JWT"]
     },
     {
-      title: "Database",
-      skills: ["MongoDB", "Mongoose", "SQL"]
+      title: "Databases & ORM",
+      skills: ["MongoDB", "PostgreSQL", "SQLite", "Prisma", "Mongoose"]
     },
     {
-      title: "AI & Automation",
-      skills: ["LangChain", "LangGraph", "Groq LLM"]
+      title: "AI & Cloud/DevOps",
+      skills: ["Groq SDK", "Git", "GitHub", "Postman", "Vercel", "Railway", "Render"]
     },
     {
-      title: "Deployment",
-      skills: ["Vercel", "Render", "Railway", "Nextify"]
-    },
-    {
-      title: "Tools",
-      skills: ["Git", "GitHub", "Postman", "Axios"]
+      title: "Security & Concepts",
+      skills: ["Role-Based Access Control (RBAC)", "OAuth 2.0", "OWASP Top 10", "Object-Oriented Programming (OOP)"]
     }
   ],
 
   projects: [
     {
-      id: "workzen",
-      title: "WorkZen",
-      category: "Full Stack Application",
-      description: "A collaborative workspace and task management platform built with the MERN stack.",
-      problem: "Teams often struggle with fragmented communication and disorganized task tracking across multiple tools.",
-      solution: "Centralized workspace providing real-time collaboration, structured task tracking, and integrated team management in one unified platform.",
-      tech: ["React", "Node.js", "Express.js", "MongoDB", "JWT", "Tailwind CSS"],
-      githubUrl: "https://github.com/ansh35/Workzen",
-      liveUrl: "https://workzen-navy.vercel.app/",
-      features: ["Real-time collaboration", "Task tracking", "Team management", "Secure JWT authentication"],
-      contribution: "Developed the core MERN architecture, implemented secure authentication, and designed the responsive frontend components.",
-      imageUrl: "/images/workzen.png"
+      id: "comment-glow",
+      title: "CommentGlow",
+      category: "VS Code Extension & Dev Tool",
+      description: "An intelligent VS Code extension that highlights TODO, FIXME, Critical, and custom comment markers with rich colors, interactive hovers, and a dedicated Comment Explorer.",
+      problem: "Developers often lose track of inline TODOs, bugs, and important notes scattered across large codebases without a structured, visual tracking mechanism.",
+      solution: "Provides real-time multi-language syntax parsing, customizable glow markers, rich hover tooltips, and a native Activity Bar explorer for seamless project navigation.",
+      tech: ["VS Code API", "JavaScript", "TypeScript", "Node.js", "Regex Engine", "Mocha / Security Tests"],
+      githubUrl: "https://github.com/ansh35/CommentGlow",
+      liveUrl: "https://marketplace.visualstudio.com/items?itemName=commentglow.commentglow",
+      features: [
+        "Smart marker highlighting (TODO, FIXME, BUG)",
+        "Interactive Activity Bar Comment Explorer",
+        "Safe Markdown hover cards & tooltips",
+        "Deep customization for markers & colors",
+        "Multi-language regex parsing & ReDoS safety",
+        "Debounced performance & security hardened"
+      ],
+      contribution: "Designed and engineered the complete VS Code extension architecture, multi-language comment parser, tree data provider for sidebar navigation, and security-hardened hover card system.",
+      imageUrl: "/images/commentglow.png"
     },
     {
       id: "json-iq",
       title: "JSON-IQ",
-      category: "AI-Powered Developer Tool",
-      description: "JSON-IQ is an AI-powered JSON Workbench that helps developers validate, format, minify, analyze, and understand JSON data. It includes Monaco Editor integration, JSON Tree Viewer, Analytics Dashboard, TypeScript Interface Generation, and AI-powered JSON insights using Groq.",
-      problem: "Developers often struggle with validating, formatting, and understanding complex or large JSON datasets, lacking an all-in-one smart workbench.",
-      solution: "An AI-powered JSON workbench that seamlessly integrates validation, formatting, and AI-driven insights to boost developer productivity.",
-      tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Monaco Editor", "shadcn/ui", "Groq API", "Vercel"],
+      category: "AI-Powered JSON Workstation",
+      description: "A studio-grade, keyboard-first JSON workstation architected with Next.js 15, TypeScript, and Monaco Editor. Features an Obsidian-styled dark UI with a custom Cmd+K command palette for 100% mouse-free developer operations.",
+      problem: "Developers frequently struggle with fragmented tools for inspecting, repairing broken JSON syntax, querying deep payloads, and generating type schemas without security leaks.",
+      solution: "Delivers an all-in-one workstation pairing Monaco diff engine syntax repairs, natural language data queries (Cmd+I), multi-target code generation (Zod, TS, Python, Go), and one-click mock HTTP endpoints.",
+      tech: ["Next.js 15", "TypeScript", "Monaco Editor", "Tailwind CSS", "Groq SDK", "Zod", "Serverless AI", "Vercel"],
       githubUrl: "https://github.com/ansh35/JSON_IQ",
       liveUrl: "https://json-iq.vercel.app/",
-      features: ["Monaco Editor", "JSON Validation", "JSON Formatter", "JSON Minifier", "JSON Tree Viewer", "Analytics Dashboard", "TypeScript Interface Generator", "AI Error Explanation", "JSON Summary"],
-      contribution: "Developed the full-stack application using Next.js, integrated Monaco Editor for seamless coding experience, and implemented Groq API for AI insights.",
-      imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop"
+      features: [
+        "Keyboard-first workflow & Cmd+K command palette",
+        "Natural language data queries (Cmd+I) via Groq",
+        "Interactive Monaco Diff engine auto-repair for broken syntax",
+        "Multi-target code gen (TypeScript, Zod, Python, Go)",
+        "One-click public mock HTTP API endpoints",
+        "Client-side secret leak interception regex",
+        "JSON Tree Viewer, Formatter, Minifier & Analytics"
+      ],
+      contribution: "Architected a keyboard-first workstation pairing an Obsidian UI with Cmd+K palette, engineered serverless AI query/repair pipelines with Monaco Diff engine, built multi-target code generation and mock APIs, and hardened edge security.",
+      imageUrl: "/images/json-iq.png"
     },
     {
-      id: "sign-decoder",
-      title: "Sign Decoder",
-      category: "Recognition System",
-      description: "A specialized tool for decoding and interpreting various sign systems.",
-      problem: "Communication barriers exist for those unfamiliar with sign systems, requiring an automated interpretation tool for better accessibility.",
-      solution: "Leverages computer vision techniques to identify and decode sign systems in real-time, providing immediate text-based translations.",
-      tech: ["React", "AI/ML", "Computer Vision"],
-      githubUrl: "https://github.com/ansh35/Sign_decoder",
-      features: ["Real-time sign recognition", "High accuracy decoding", "Intuitive user interface"],
-      contribution: "Explored AI/ML models for sign recognition and developed the React-based visual feedback interface.",
-      imageUrl: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=800&auto=format&fit=crop"
+      id: "ai-email-cleaner",
+      title: "AI Email Cleaner",
+      category: "AI Productivity Tool",
+      description: "An intelligent AI-powered email management and inbox cleaner that automatically analyzes, classifies, filters, and summarizes cluttered emails using high-speed LLM inference.",
+      problem: "Modern inboxes are overwhelmed with spam, promotional clutter, and newsletters, forcing professionals to waste valuable hours sorting critical communications.",
+      solution: "Integrates Groq LPU inference and Google Gemini AI to intelligently classify email priority, isolate unwanted clutter, and generate concise summaries with zero data retention.",
+      tech: ["Node.js", "TypeScript", "Groq SDK", "Google Gemini API", "REST APIs", "Security Audited"],
+      githubUrl: "https://github.com/ansh35/AI_Email_Cleaner",
+      demoUrl: "https://drive.google.com/file/d/1J_q7gsQEIEWfTLsRs7jVTbajLbHDWUpD/view?usp=sharing",
+      features: [
+        "Multi-LLM inference (Groq & Gemini)",
+        "Automated spam & promotional clutter filtering",
+        "Smart email summarization & prioritization",
+        "Fast batch email processing pipeline",
+        "Security-hardened sensitive data handling",
+        "Privacy-first architecture"
+      ],
+      contribution: "Architected the full email analysis pipeline, integrated dual-provider LLM inference (Groq & Gemini), and implemented security standards for sensitive email handling.",
+      imageUrl: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?q=80&w=800&auto=format&fit=crop"
     },
     {
       id: "ai-healthcare-crm",
@@ -169,25 +188,22 @@ export const portfolioData = {
 
   experience: [
     {
-      role: "Developer Intern",
+      role: "Data & Operations Intern",
       company: "Haldiram's Private Limited",
-      type: "Remote Internship",
-      duration: "May 2025 - July 2025",
+      duration: "May 2025 – July 2025",
       highlights: [
-        "Backend API Integration",
-        "Request Handling",
-        "Server-Side Business Logic",
-        "Git/GitHub Collaboration",
-        "Agile Workflow Experience"
+        "Audited operational data pipelines and standardized digital logging workflows across 10+ daily supply chain systems, eliminating tracking discrepancies.",
+        "Automated and digitized operational tracking pipelines using data scripts, eliminating data entry bottlenecks to improve daily workflow turnaround times by 25%."
       ],
       certificateUrl: "https://drive.google.com/file/d/1r4Uz7NVGNusYVoiC_xV16zrpayYRwy1d/view?usp=sharing"
     }
-  ],
+  ] as Experience[],
 
   certifications: [
     { title: "Infosys TechA Python Foundation", issuer: "Infosys", certificateUrl: "https://drive.google.com/file/d/1h4MlBfVuki3kD5BTSgEoNZkoP7U2JcFH/view?usp=sharing" },
-    { title: "Infosys GitHub Foundation", issuer: "Infosys", certificateUrl: "https://drive.google.com/file/d/1-TtDOalFmNnL3MOMzZ0d1LhIF9KPKVlp/view?usp=sharing" },
-    { title: "Infosys Agile Scrum Certification", issuer: "Infosys", certificateUrl: "https://drive.google.com/file/d/13eGGs6QWGQiikYMGicS4GdJogTKFGvhL/view?usp=sharing" }
+    { title: "Mastering Git & GitHub Foundation", issuer: "Infosys", certificateUrl: "https://drive.google.com/file/d/1-TtDOalFmNnL3MOMzZ0d1LhIF9KPKVlp/view?usp=sharing" },
+    { title: "Infosys Agile Scrum Certification", issuer: "Infosys", certificateUrl: "https://drive.google.com/file/d/13eGGs6QWGQiikYMGicS4GdJogTKFGvhL/view?usp=sharing" },
+    { title: "Software Engineering Specialization", issuer: "Infosys / Academic", certificateUrl: "https://drive.google.com/drive/folders/13sJ6L_xTy2ay2NnLCBHTl9-epT-dt-DA?usp=sharing" }
   ],
   certificateFolderUrl: "https://drive.google.com/drive/folders/13sJ6L_xTy2ay2NnLCBHTl9-epT-dt-DA?usp=sharing"
 }

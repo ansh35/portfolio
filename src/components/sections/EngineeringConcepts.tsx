@@ -4,16 +4,16 @@ import React from "react"
 import { motion } from "framer-motion"
 
 const concepts = [
-  "MVC Architecture",
+  "Role-Based Access Control (RBAC)",
+  "OAuth 2.0 & Authentication",
+  "OWASP Top 10 Security",
   "Object-Oriented Programming (OOP)",
-  "CRUD Operations",
-  "REST API Design",
-  "JWT Authentication",
-  "Authentication & Authorization",
-  "API Integration",
-  "State Management",
-  "Git Workflow",
-  "Agile Scrum"
+  "REST API Architecture",
+  "Pusher WebSockets & Real-Time",
+  "MVC Architecture",
+  "Prisma ORM & Data Modeling",
+  "Git & Branching Workflow",
+  "Agile Scrum Methodology"
 ]
 
 export function EngineeringConcepts() {

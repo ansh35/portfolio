@@ -82,21 +82,27 @@ export function Projects() {
               variants={cardVariants}
               whileHover={{ y: -8 }}
               className={`group relative rounded-3xl glass-panel border ${
-                project.id === "json-iq" 
+                project.id === "json-iq" || project.id === "comment-glow" || project.id === "ai-email-cleaner"
                   ? "border-primary-gold/50 shadow-[0_0_40px_rgba(212,175,55,0.15)] bg-gradient-to-b from-[#111626]/90 to-[#0B1120]/80" 
                   : "border-white/5 bg-[#0B1120]/60"
               } overflow-hidden flex flex-col ${
-                project.id === "json-iq" 
+                project.id === "json-iq" || project.id === "comment-glow" || project.id === "ai-email-cleaner"
                   ? "hover:border-primary-gold/80 hover:shadow-[0_0_60px_rgba(212,175,55,0.25)]" 
                   : "hover:border-primary-gold/30 hover:bg-primary-gold/5"
               } transition-all duration-500 shadow-2xl`}
             >
               {/* Card Header: Category & Image */}
-              <div className="relative aspect-video w-full overflow-hidden">
+              <div className="relative aspect-video w-full overflow-hidden bg-[#070b18] flex items-center justify-center">
                 <img
                   src={project.imageUrl}
                   alt={project.title}
-                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-1000 ease-out brightness-[0.6] group-hover:brightness-[0.8]"
+                  className={`w-full h-full transition-transform duration-1000 ease-out ${
+                    project.id === "comment-glow"
+                      ? "object-contain p-4 group-hover:scale-105"
+                      : project.id === "json-iq"
+                      ? "object-cover object-top group-hover:scale-105 brightness-[0.85] group-hover:brightness-[1]"
+                      : "object-cover group-hover:scale-105 brightness-[0.6] group-hover:brightness-[0.8]"
+                  }`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-transparent opacity-90" />
                 
@@ -110,10 +116,30 @@ export function Projects() {
                   {project.id === "json-iq" && (
                     <div className="flex gap-2 mt-1">
                       <Badge className="bg-cyan-500/20 backdrop-blur-xl border border-cyan-400/50 text-cyan-400 text-[9px] uppercase font-bold tracking-widest px-2 py-0.5">
-                        NEW PROJECT
+                        KEYBOARD-FIRST
                       </Badge>
                       <Badge className="bg-purple-500/20 backdrop-blur-xl border border-purple-400/50 text-purple-400 text-[9px] uppercase font-bold tracking-widest px-2 py-0.5">
-                        AI POWERED
+                        MONACO DIFF & AI
+                      </Badge>
+                    </div>
+                  )}
+                  {project.id === "comment-glow" && (
+                    <div className="flex gap-2 mt-1">
+                      <Badge className="bg-emerald-500/20 backdrop-blur-xl border border-emerald-400/50 text-emerald-400 text-[9px] uppercase font-bold tracking-widest px-2 py-0.5">
+                        VS CODE EXTENSION
+                      </Badge>
+                      <Badge className="bg-amber-500/20 backdrop-blur-xl border border-amber-400/50 text-amber-400 text-[9px] uppercase font-bold tracking-widest px-2 py-0.5">
+                        DEVELOPER TOOL
+                      </Badge>
+                    </div>
+                  )}
+                  {project.id === "ai-email-cleaner" && (
+                    <div className="flex gap-2 mt-1">
+                      <Badge className="bg-indigo-500/20 backdrop-blur-xl border border-indigo-400/50 text-indigo-400 text-[9px] uppercase font-bold tracking-widest px-2 py-0.5">
+                        GROQ & GEMINI
+                      </Badge>
+                      <Badge className="bg-emerald-500/20 backdrop-blur-xl border border-emerald-400/50 text-emerald-400 text-[9px] uppercase font-bold tracking-widest px-2 py-0.5">
+                        PRODUCTIVITY
                       </Badge>
                     </div>
                   )}
@@ -189,7 +215,9 @@ export function Projects() {
                   {(project.liveUrl || project.demoUrl) && (
                     <Button className="flex-[1.2] rounded-2xl bg-primary-gold hover:bg-soft-gold text-luxury-bg font-bold shadow-[0_10px_20px_rgba(212,175,55,0.1)] group/btn transition-all duration-300 h-12" asChild>
                       <a href={project.liveUrl || project.demoUrl} target="_blank" rel="noopener noreferrer">
-                        {project.liveUrl ? (
+                        {project.id === "comment-glow" ? (
+                          <><ExternalLink className="size-4 mr-2 group-hover/btn:translate-x-0.5 transition-transform" /> VS Marketplace</>
+                        ) : project.liveUrl ? (
                           <><ExternalLink className="size-4 mr-2 group-hover/btn:translate-x-0.5 transition-transform" /> Live Project</>
                         ) : (
                           <><PlayCircle className="size-4 mr-2" /> View Demo</>
