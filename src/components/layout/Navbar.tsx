@@ -1,10 +1,17 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { Menu, X, ArrowRight, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+  SheetTitle,
+  SheetDescription,
+} from "@/components/ui/sheet"
 
 const navItems = [
   { name: "Home", href: "#hero" },
@@ -113,7 +120,7 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           <Button variant="outline" size="sm" className="border-primary-gold/20 text-soft-gold hover:border-primary-gold/60 hover:bg-primary-gold/10 font-sans tracking-wide" asChild>
             <a href="#contact">
-              Let's Talk <ArrowRight className="size-4 ml-1" />
+              Let&apos;s Talk <ArrowRight className="size-4 ml-1" />
             </a>
           </Button>
         </div>
@@ -127,7 +134,13 @@ export function Navbar() {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-75 border-l border-primary-gold/15 bg-luxury-bg/95 backdrop-blur-xl p-8 flex flex-col justify-between">
+            <SheetContent
+              side="right"
+              showCloseButton={false}
+              className="w-75 border-l border-primary-gold/15 bg-luxury-bg/95 backdrop-blur-xl p-8 flex flex-col justify-between"
+            >
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              <SheetDescription className="sr-only">Mobile navigation menu and links</SheetDescription>
               <div>
                 <div className="flex items-center justify-between mb-12">
                   <a href="#hero" className="font-heading text-xl font-bold tracking-widest text-white">

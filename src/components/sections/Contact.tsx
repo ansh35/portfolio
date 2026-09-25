@@ -1,46 +1,31 @@
 "use client"
 
 import React, { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Mail, Send, Check, AlertCircle } from "lucide-react"
+import { motion } from "framer-motion"
+import { Mail, Send, ArrowUpRight, Copy, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { portfolioData } from "@/data/portfolioData"
 
 export function Contact() {
   const { personalInfo } = portfolioData
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" })
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
-  const [errorMsg, setErrorMsg] = useState("")
+  const [copied, setCopied] = useState(false)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(personalInfo.email)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    }
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    
-    if (!form.name || !form.email || !form.subject || !form.message) {
-      setErrorMsg("All fields are required.")
-      setStatus("error")
-      return
-    }
-
-    if (!/\S+@\S+\.\S+/.test(form.email)) {
-      setErrorMsg("Please enter a valid email address.")
-      setStatus("error")
-      return
-    }
-
-    setStatus("loading")
-    setErrorMsg("")
-
-    setTimeout(() => {
-      setStatus("success")
-      setForm({ name: "", email: "", subject: "", message: "" })
-    }, 2000)
-  }
+  const subject = encodeURIComponent("Project Collaboration / Opportunity Inquiry")
+  const body = encodeURIComponent(
+    `Hi ${personalInfo.name},\n\nI came across your portfolio and would love to connect regarding an opportunity / project.\n\nBest regards,`
+  )
+  const mailtoUrl = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden bg-[#050816]">
@@ -48,10 +33,9 @@ export function Contact() {
       <div className="absolute bottom-[-10%] left-[10%] w-[500px] h-[500px] bg-primary-gold/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
         {/* Section Heading */}
         <div className="flex flex-col items-center text-center mb-16">
-          <motion.span 
+          <motion.span
             className="text-primary-gold text-xs uppercase tracking-widest font-semibold mb-2"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -60,16 +44,16 @@ export function Contact() {
           >
             Get In Touch
           </motion.span>
-          <motion.h2 
+          <motion.h2
             className="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight"
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Let's Start a Conversation
+            Let&apos;s Start a Conversation
           </motion.h2>
-          <motion.div 
+          <motion.div
             className="w-12 h-1 bg-primary-gold mt-4 rounded-full"
             initial={{ width: 0 }}
             whileInView={{ width: 48 }}
@@ -78,11 +62,10 @@ export function Contact() {
           />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start max-w-5xl mx-auto">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch max-w-5xl mx-auto">
           {/* Left Column: Direct info */}
-          <motion.div 
-            className="lg:col-span-5 flex flex-col gap-8 h-full"
+          <motion.div
+            className="lg:col-span-5 flex flex-col justify-between gap-8 h-full"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -93,10 +76,10 @@ export function Contact() {
                 Available for Opportunities
               </h3>
               <p className="font-sans text-sm text-muted-gray leading-relaxed">
-                I'm currently looking for new opportunities in Product-focused engineering. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                I&apos;m currently looking for new opportunities in Product-focused engineering. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
               </p>
 
-              <div className="flex flex-col gap-4 mt-4">
+              <div className="flex flex-col gap-4 mt-2">
                 <div className="flex items-center gap-4 p-4 rounded-xl border border-white/5 bg-[#0B1120]/40 group hover:border-primary-gold/30 transition-all">
                   <div className="p-2.5 rounded-lg bg-primary-gold/10 text-soft-gold border border-primary-gold/20 group-hover:scale-110 transition-transform">
                     <Mail className="size-4" />
@@ -111,7 +94,7 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-4 mt-auto pt-8">
+            <div className="flex flex-col gap-4 pt-8">
               <span className="text-xs uppercase tracking-widest font-semibold text-muted-gray">Social Channels</span>
               <div className="flex items-center gap-3">
                 <Button variant="outline" size="sm" className="border-white/10 hover:border-primary-gold/30 hover:bg-primary-gold/5 text-muted-gray hover:text-soft-gold flex-1 rounded-xl" asChild>
@@ -128,125 +111,114 @@ export function Contact() {
             </div>
           </motion.div>
 
-          {/* Right Column: Contact form */}
-          <motion.div 
-            className="lg:col-span-7"
+          {/* Right Column: Direct Connect CTA Card */}
+          <motion.div
+            className="lg:col-span-7 h-full"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <form onSubmit={handleSubmit} className="rounded-2xl glass-panel p-6 sm:p-8 border border-white/5 bg-[#0B1120]/40 flex flex-col gap-5 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10">
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="name" className="text-xs font-semibold text-white tracking-wide uppercase">Your Name</label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="John Doe"
-                    disabled={status === "loading" || status === "success"}
-                    className="bg-[#050816]/60 border-white/10 focus:border-primary-gold/50 transition-all rounded-xl h-11"
-                  />
+            <div className="rounded-2xl glass-panel p-6 sm:p-8 md:p-10 border border-white/5 bg-[#0B1120]/40 flex flex-col justify-between relative overflow-hidden group shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:border-primary-gold/25 transition-all duration-500 h-full">
+              {/* Ambient gold hover glow & radial spotlights */}
+              <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary-gold/10 rounded-full blur-3xl group-hover:bg-primary-gold/20 transition-all duration-700 pointer-events-none" />
+              <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-primary-gold/5 rounded-full blur-3xl group-hover:bg-primary-gold/15 transition-all duration-700 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col gap-6">
+                {/* Gold-accented badge & Availability status */}
+                <div className="flex items-center justify-between flex-wrap gap-3">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-gold/10 border border-primary-gold/25 text-soft-gold text-xs font-mono font-medium tracking-wide">
+                    <Send className="size-3.5 text-primary-gold" />
+                    <span>DIRECT CONNECT</span>
+                  </div>
+
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-muted-gray">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span className="text-[11px] font-sans">Open for Opportunities</span>
+                  </div>
                 </div>
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="text-xs font-semibold text-white tracking-wide uppercase">Your Email</label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="john@example.com"
-                    disabled={status === "loading" || status === "success"}
-                    className="bg-[#050816]/60 border-white/10 focus:border-primary-gold/50 transition-all rounded-xl h-11"
-                  />
+
+                {/* Headline & Invitation Message */}
+                <div className="flex flex-col gap-3">
+                  <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+                    Let&apos;s Build Something Together
+                  </h3>
+                  <p className="font-sans text-sm sm:text-base text-muted-gray leading-relaxed">
+                    Whether you are recruiting for engineering roles, looking to collaborate on high-impact products, or exploring scalable AI architectures, my inbox is open. Let&apos;s talk and make it happen.
+                  </p>
+                </div>
+
+                {/* Direct Email Address Display Box with Quick Copy */}
+                <div className="p-4 rounded-xl border border-white/5 bg-[#050816]/60 flex items-center justify-between gap-3 group/box hover:border-primary-gold/20 transition-all">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="p-2.5 rounded-lg bg-primary-gold/10 text-primary-gold border border-primary-gold/20 shrink-0">
+                      <Mail className="size-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="text-[10px] text-muted-gray uppercase tracking-widest block font-sans">Email Address</span>
+                      <span className="text-sm font-semibold text-white font-mono truncate block select-all">
+                        {personalInfo.email}
+                      </span>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg border border-white/10 hover:border-primary-gold/40 bg-white/5 hover:bg-primary-gold/10 text-xs text-muted-gray hover:text-soft-gold transition-all cursor-pointer font-sans shrink-0"
+                    title="Copy email to clipboard"
+                    aria-label="Copy email address"
+                  >
+                    {copied ? (
+                      <>
+                        <Check className="size-3.5 text-primary-gold" />
+                        <span className="text-soft-gold font-medium">Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="size-3.5" />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2 relative z-10">
-                <label htmlFor="subject" className="text-xs font-semibold text-white tracking-wide uppercase">Subject</label>
-                <Input
-                  id="subject"
-                  name="subject"
-                  value={form.subject}
-                  onChange={handleChange}
-                  placeholder="Inquiry about custom project"
-                  disabled={status === "loading" || status === "success"}
-                  className="bg-[#050816]/60 border-white/10 focus:border-primary-gold/50 transition-all rounded-xl h-11"
-                />
+              {/* Action Buttons: Primary Gold CTA & Secondary Copy CTA */}
+              <div className="relative z-10 flex flex-col sm:flex-row gap-3 pt-6 mt-6 border-t border-white/5">
+                <a
+                  href={mailtoUrl}
+                  className="flex-1 h-12 font-sans font-bold text-sm tracking-wide rounded-xl flex items-center justify-center gap-2 bg-primary-gold hover:bg-soft-gold text-luxury-bg shadow-[0_0_20px_rgba(212,175,55,0.15)] hover:shadow-[0_0_30px_rgba(212,175,55,0.35)] transition-all duration-300 group/btn"
+                >
+                  <Send className="size-4" />
+                  <span>Send Direct Email</span>
+                  <ArrowUpRight className="size-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                </a>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleCopyEmail}
+                  className="h-12 border-white/10 hover:border-primary-gold/30 hover:bg-primary-gold/5 text-muted-gray hover:text-soft-gold transition-all rounded-xl px-5 font-sans"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="size-4 text-primary-gold mr-1.5" />
+                      <span>Copied to Clipboard</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="size-4 mr-1.5" />
+                      <span>Copy Address</span>
+                    </>
+                  )}
+                </Button>
               </div>
-
-              <div className="flex flex-col gap-2 relative z-10">
-                <label htmlFor="message" className="text-xs font-semibold text-white tracking-wide uppercase">Message</label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Write your message details..."
-                  className="min-h-[120px] resize-none bg-[#050816]/60 border-white/10 focus:border-primary-gold/50 transition-all rounded-xl"
-                  disabled={status === "loading" || status === "success"}
-                />
-              </div>
-
-              {/* Feedback messages */}
-              <AnimatePresence mode="wait">
-                {status === "error" && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="p-3.5 rounded-xl border border-red-500/20 bg-red-500/5 text-red-400 text-xs flex items-center gap-2 relative z-10"
-                  >
-                    <AlertCircle className="size-4 shrink-0" />
-                    <span>{errorMsg}</span>
-                  </motion.div>
-                )}
-
-                {status === "success" && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="p-3.5 rounded-xl border border-primary-gold/20 bg-primary-gold/5 text-primary-gold text-xs flex items-center gap-2 relative z-10"
-                  >
-                    <Check className="size-4 shrink-0" />
-                    <span>Message sent successfully! I will reach back to you shortly.</span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Submit button */}
-              <Button
-                type="submit"
-                disabled={status === "loading" || status === "success"}
-                className={`w-full h-12 font-sans font-bold tracking-wide rounded-xl flex items-center justify-center gap-2 border transition-all duration-500 relative z-10 ${
-                  status === "success"
-                    ? "bg-primary-gold border-transparent text-luxury-bg scale-[0.98]"
-                    : "bg-primary-gold hover:bg-soft-gold border-transparent text-luxury-bg shadow-[0_0_20px_rgba(212,175,55,0.15)] hover:shadow-[0_0_30px_rgba(212,175,55,0.3)]"
-                }`}
-              >
-                {status === "loading" ? (
-                  <>
-                    <span className="w-4 h-4 border-2 border-luxury-bg border-t-transparent rounded-full animate-spin"></span>
-                    Sending...
-                  </>
-                ) : status === "success" ? (
-                  <>
-                    <Check className="size-4" />
-                    Message Sent
-                  </>
-                ) : (
-                  <>
-                    <Send className="size-4" />
-                    Send Message
-                  </>
-                )}
-              </Button>
-            </form>
+            </div>
           </motion.div>
         </div>
       </div>

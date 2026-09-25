@@ -182,7 +182,7 @@ export const portfolioData = {
       demoUrl: "https://drive.google.com/file/d/1Mug3GnV0eAxMQAr1VFgCsQwdfonFioO7/view?usp=sharing",
       features: ["AI-driven interaction logging", "Context-aware suggestions", "Healthcare clinical data handling"],
       contribution: "Architected the LangChain workflow for clinical data extraction and built the FastAPI backend services.",
-      imageUrl: "/images/ai-crm.png?v=2"
+      imageUrl: "/images/ai-crm.png"
     }
   ],
 

@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import Image from "next/image"
 import { motion, Variants } from "framer-motion"
 import { ExternalLink, CheckCircle2, PlayCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -93,10 +94,12 @@ export function Projects() {
             >
               {/* Card Header: Category & Image */}
               <div className="relative aspect-video w-full overflow-hidden bg-[#070b18] flex items-center justify-center">
-                <img
+                <Image
                   src={project.imageUrl}
                   alt={project.title}
-                  className={`w-full h-full transition-transform duration-1000 ease-out ${
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className={`transition-transform duration-1000 ease-out ${
                     project.id === "comment-glow"
                       ? "object-contain p-4 group-hover:scale-105"
                       : project.id === "json-iq"

@@ -2,7 +2,7 @@
 
 import React from "react"
 import { motion, Variants } from "framer-motion"
-import { Calendar, Star, FileCheck, CheckCircle2 } from "lucide-react"
+import { FileCheck, CheckCircle2 } from "lucide-react"
 import { portfolioData } from "@/data/portfolioData"
 
 export function Experience() {

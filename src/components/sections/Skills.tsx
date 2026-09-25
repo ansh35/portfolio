@@ -2,7 +2,7 @@
 
 import React from "react"
 import { motion, Variants } from "framer-motion"
-import { Layers, Server, Database, Globe, Shield, Terminal, Wrench } from "lucide-react"
+import { Layers, Server, Database, Globe, Shield, Terminal, Wrench, type LucideIcon } from "lucide-react"
 import { portfolioData } from "@/data/portfolioData"
 
 export function Skills() {
@@ -30,7 +30,7 @@ export function Skills() {
     }
   }
 
-  const categoryIcons: Record<string, any> = {
+  const categoryIcons: Record<string, LucideIcon> = {
     "Languages": Terminal,
     "Frontend": Layers,
     "Backend & Real-Time": Server,

@@ -2,7 +2,6 @@
 
 import React from "react"
 import { motion, Variants } from "framer-motion"
-import { Award, Compass, Heart, Shield } from "lucide-react"
 import { portfolioData } from "@/data/portfolioData"
 
 export function About() {
